@@ -1,0 +1,7 @@
+/.metadata/
+/RemoteSystemsTempFiles/
+/.recommenders
+/deploy
+/jar
+/logs
+.DS_Store
