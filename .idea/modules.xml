@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/parkson-utils.iml" filepath="$PROJECT_DIR$/.idea/parkson-utils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/utils-core/utils-core.iml" filepath="$PROJECT_DIR$/utils-core/utils-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/utils-druid/utils-druid.iml" filepath="$PROJECT_DIR$/utils-druid/utils-druid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/utils-parent/utils-parent.iml" filepath="$PROJECT_DIR$/utils-parent/utils-parent.iml" />
+    </modules>
+  </component>
+</project>

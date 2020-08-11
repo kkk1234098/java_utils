@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.parkson.utils</groupId>
+  <artifactId>utils-parent</artifactId>
+  <version>1.0.211</version>
+  <packaging>pom</packaging>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.1.1.RELEASE</version>
+    <relativePath/>
+  </parent>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>maven-snapshots</id>
+      <name>maven-snapshots-repository</name>
+      <url>http://200.86.6.198:8005/repository/maven-snapshots/</url>
+    </snapshotRepository>
+    <repository>
+      <id>maven-releases</id>
+      <name>maven-releases-repository</name>
+      <url>http://200.86.6.198:8005/repository/maven-releases/</url>
+    </repository>
+  </distributionManagement>
+
+  <repositories>
+    <repository>
+      <id>nexus</id>
+      <name>Nexus Repository</name>
+      <url>http://200.86.6.198:8005/repository/maven-public/</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </repository>
+    <repository>
+      <id>spring-milestones</id>
+      <name>Spring Milestones</name>
+      <url>https://repo.spring.io/milestone</url>
+    </repository>
+  </repositories>
+
+  <properties>
+    <!-- 主要依赖库的版本定义 -->
+    <jdk.version>1.8</jdk.version>
+    <utils.version>1.0.211</utils.version>
+    <jar.output>../jar</jar.output>
+  </properties>
+
+  <modules>
+    <module>../utils-core</module>
+    <module>../utils-druid</module>
+  </modules>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- spring-context -->
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <!-- druid -->
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>druid-spring-boot-starter</artifactId>
+        <version>1.1.20</version>
+      </dependency>
+      <!-- google com.parkson.utils.core.cache -->
+      <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <version>27.1-jre</version>
+      </dependency>
+      <!-- 其他 -->
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>3.8.1</version>
+      </dependency>
+      <!-- parkson utils -->
+      <dependency>
+        <groupId>com.parkson.utils</groupId>
+        <artifactId>utils-core</artifactId>
+        <version>${utils.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.parkson.utils</groupId>
+        <artifactId>utils-druid</artifactId>
+        <version>${utils.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>properties-maven-plugin</artifactId>
+        <version>1.0.0</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+</project>
