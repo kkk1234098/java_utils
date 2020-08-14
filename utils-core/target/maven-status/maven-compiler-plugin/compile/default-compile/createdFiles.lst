@@ -1,2 +1,6 @@
+com/parkson/utils/core/command/ICommand.class
+com/parkson/utils/core/command/CommandExecutor.class
 com/parkson/utils/core/util/SpringContextHolder.class
 com/parkson/utils/core/cache/LocalCacheManager.class
+com/parkson/utils/core/encrypt/MD5Util.class
+com/parkson/utils/core/encrypt/SignatureUtil.class
