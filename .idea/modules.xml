@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/parkson-utils.iml" filepath="$PROJECT_DIR$/.idea/parkson-utils.iml" />
       <module fileurl="file://$PROJECT_DIR$/utils-core/utils-core.iml" filepath="$PROJECT_DIR$/utils-core/utils-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/utils-druid/utils-druid.iml" filepath="$PROJECT_DIR$/utils-druid/utils-druid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/utils-http/utils-http.iml" filepath="$PROJECT_DIR$/utils-http/utils-http.iml" />
       <module fileurl="file://$PROJECT_DIR$/utils-parent/utils-parent.iml" filepath="$PROJECT_DIR$/utils-parent/utils-parent.iml" />
     </modules>
   </component>

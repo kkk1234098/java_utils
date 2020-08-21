@@ -2,9 +2,7 @@ package com.parkson.utils.core.encrypt;
 
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @ClassName SignatureUtil
@@ -38,6 +36,7 @@ public class SignatureUtil {
         }
         String result = sb.toString();
         result += "secret=" + appSecret;
+        System.out.println(result);
 
         return MD5Util.encrypt(result);
     }
@@ -49,5 +48,35 @@ public class SignatureUtil {
 
         String result = SignatureUtil.generate(params, appSecret);
         return StringUtils.equals(result, sign);
+    }
+
+    public static void main(String[] args) {
+        Child child1 = new Child();
+        child1.setName("chen");
+        child1.setAge(10);
+
+        Child child2 = new Child();
+        child2.setName("chen333");
+        child2.setAge(33);
+
+        Map<String, String> map1 = new HashMap<>();
+        map1.put("name", "ch en");
+        map1.put("age", "333");
+
+        Map<String, String> map2 = new HashMap<>();
+        map2.put("name", "chen2");
+        map2.put("age", "3333");
+
+        List<Map<String, String>> list = new ArrayList<Map<String, String>>();
+        list.add(map1);
+        list.add(map2);
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("name", "ccccc");
+        map.put("list", list);
+        generate(map, "asdsadsadasd");
+
+
+        System.out.println("asds");
     }
 }

@@ -24,6 +24,11 @@
     <remote-repository>
       <option name="id" value="nexus" />
       <option name="name" value="Nexus Repository" />
+      <option name="url" value="http://200.86.3.85:8005/repository/maven-public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="nexus" />
+      <option name="name" value="Nexus Repository" />
       <option name="url" value="http://200.86.6.198:8005/repository/maven-public/" />
     </remote-repository>
     <remote-repository>
