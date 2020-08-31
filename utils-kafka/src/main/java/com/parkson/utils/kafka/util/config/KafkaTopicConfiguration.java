@@ -18,6 +18,13 @@ import org.springframework.stereotype.Component;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+/**
+ * @ClassName KafkaTopicConfiguration
+ * @Description TO DO
+ * @Author hc
+ * @Date 2020/8/31
+ * @Version 1.0
+ */
 
 @Data
 @Component

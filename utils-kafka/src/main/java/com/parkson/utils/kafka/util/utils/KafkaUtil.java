@@ -10,6 +10,14 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
+/**
+ * @ClassName KafkaUtil
+ * @Description TO DO
+ * @Author hc
+ * @Date 2020/8/31
+ * @Version 1.0
+ */
+
 @Lazy
 @Component
 public class KafkaUtil {
