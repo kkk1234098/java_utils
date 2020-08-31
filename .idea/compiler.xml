@@ -9,6 +9,7 @@
         <module name="utils-http" />
         <module name="utils-core" />
         <module name="utils-druid" />
+        <module name="utils-redis" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -16,6 +17,7 @@
       <module name="utils-druid" target="1.8" />
       <module name="utils-http" target="1.8" />
       <module name="utils-parent" target="1.8" />
+      <module name="utils-redis" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -23,6 +25,7 @@
       <module name="utils-core" options="-parameters" />
       <module name="utils-druid" options="-parameters" />
       <module name="utils-http" options="-parameters" />
+      <module name="utils-redis" options="-parameters" />
     </option>
   </component>
 </project>
