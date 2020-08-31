@@ -71,6 +71,7 @@ public class SignatureUtil {
         }
         String result = sb.toString();
         result += "secret=" + appSecret;
+        result = result.replace(" ", "");
         System.out.println("参数明文: " + result);
 
         return MD5Util.encrypt(result);
@@ -98,7 +99,7 @@ public class SignatureUtil {
         child2.setName(null);
         child2.setAge(33);
         JSONObject jsonObject2 = new JSONObject();
-        jsonObject2.put("name", "chen2");
+        jsonObject2.put("name", "che   n2");
         jsonObject2.put("age", 33);
 
         Child child3 = new Child();
