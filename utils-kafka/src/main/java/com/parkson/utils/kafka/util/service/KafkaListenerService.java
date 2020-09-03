@@ -12,6 +12,6 @@ import org.springframework.kafka.annotation.KafkaListener;
  */
 
 public interface KafkaListenerService {
-    @KafkaListener(topics =  "#{kafkaTopicName}", groupId = "#{topicGroupId}")
-    public void processMessage(ConsumerRecord<Integer,String> record);
+    @KafkaListener(topics = "#{kafkaTopicName}", groupId = "#{topicGroupId}")
+    public void processMessage(ConsumerRecord<Integer, String> record);
 }
