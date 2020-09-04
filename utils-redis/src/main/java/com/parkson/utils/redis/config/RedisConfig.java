@@ -3,6 +3,7 @@ package com.parkson.utils.redis.config;
 import com.parkson.utils.redis.util.FastJson2JsonRedisSerializer;
 import com.parkson.utils.redis.util.RedisTemplate;
 import com.parkson.utils.redis.util.RedisUtil;
+import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,6 +23,7 @@ import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSeriali
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import redis.clients.jedis.JedisPoolConfig;
 
 import java.time.Duration;
 
@@ -47,35 +49,53 @@ public class RedisConfig {
     @Value("${redis.port}")
     private Integer port;
 
-    @Value("${redis.maxIdle}")
-    private Integer maxIdle;
-
-    @Value("${redis.timeout}")
-    private Integer timeout;
-
-    @Value("${redis.maxTotal}")
+    // 连接池的最大数据库连接数。设为0表示无限制, 默认8
+    @Value("${redis.maxTotal:8}")
     private Integer maxTotal;
 
-    @Value("${redis.maxWaitMillis}")
+    // 最大能够保持idle状态的对象数，默认值8
+    @Value("${redis.maxIdle:8}")
+    private Integer maxIdle;
+
+    // 最少能够保持idle状态的对象数，默认值0
+    @Value("${redis.minIdle:0}")
+    private Integer minIdle;
+
+    // 客户端超时(connectTimeout, readTimeout)时间单位是毫秒, 默认是2000
+    @Value("${redis.timeout:2000}")
+    private Integer timeout;
+
+    // 最大建立连接等待时间。如果超过此时间将接到异常。设为-1表示无限制。默认值-1
+    @Value("${redis.maxWaitMillis:-1}")
     private Integer maxWaitMillis;
 
-    @Value("${redis.minEvictableIdleTimeMillis}")
+    // 默认60000
+    @Value("${redis.minEvictableIdleTimeMillis:60000L}")
     private Integer minEvictableIdleTimeMillis;
 
-    @Value("${redis.numTestsPerEvictionRun}")
+    // 每次检查几个链接，默认值3
+    @Value("${redis.numTestsPerEvictionRun:3}")
     private Integer numTestsPerEvictionRun;
 
-    @Value("${redis.timeBetweenEvictionRunsMillis}")
+    // 逐出扫描的时间间隔(毫秒) 如果为负数,则不运行逐出线程, 默认-1
+    @Value("${redis.timeBetweenEvictionRunsMillis:-1}")
     private long timeBetweenEvictionRunsMillis;
 
-    @Value("${redis.testOnBorrow}")
+    // 是否在从池中取出连接前进行检验,如果检验失败,则从池中去除连接并尝试取出另一个, 默认false
+    @Value("${redis.testOnBorrow:false}")
     private boolean testOnBorrow;
 
-    @Value("${redis.testOnReturn}")
+    // 是否在返回时检查连接有效性
+    @Value("${redis.testOnReturn:true}")
     private boolean testOnReturn;
 
-    @Value("${redis.testWhileIdle}")
+    // 在空闲时检查有效性, 默认true
+    @Value("${redis.testWhileIdle:true}")
     private boolean testWhileIdle;
+
+    // 是否开启事务，默认值false
+    @Value("${redis.enableTransactionSupport:false}")
+    private boolean enableTransactionSupport;
 
     /**
      * @auther: cheneason
@@ -93,7 +113,25 @@ public class RedisConfig {
         //redisStandaloneConfiguration.setDatabase(database);
         redisStandaloneConfiguration.setPassword(RedisPassword.of(password));
         JedisClientConfiguration.JedisClientConfigurationBuilder jedisClientConfiguration = JedisClientConfiguration.builder();
+        JedisClientConfiguration.JedisPoolingClientConfigurationBuilder jedisPoolingClientConfigurationBuilder = (JedisClientConfiguration.JedisPoolingClientConfigurationBuilder)jedisClientConfiguration;
+
+        /* ========= 连接池通用配置 ========= */
+        GenericObjectPoolConfig genericObjectPoolConfig = new GenericObjectPoolConfig();
+        genericObjectPoolConfig.setMaxTotal(maxTotal);
+        genericObjectPoolConfig.setMinIdle(minIdle);
+        genericObjectPoolConfig.setMaxIdle(maxIdle);
+        genericObjectPoolConfig.setMaxWaitMillis(maxWaitMillis);
+        genericObjectPoolConfig.setTestOnBorrow(testOnBorrow);
+        genericObjectPoolConfig.setTestOnReturn(testOnReturn);
+        genericObjectPoolConfig.setTestWhileIdle(testWhileIdle);
+        genericObjectPoolConfig.setTimeBetweenEvictionRunsMillis(timeBetweenEvictionRunsMillis);
+        genericObjectPoolConfig.setMinEvictableIdleTimeMillis(minEvictableIdleTimeMillis);
+        genericObjectPoolConfig.setNumTestsPerEvictionRun(numTestsPerEvictionRun);
+
+        jedisClientConfiguration.usePooling();
         jedisClientConfiguration.connectTimeout(Duration.ofMillis(timeout));
+        jedisClientConfiguration.readTimeout(Duration.ofMillis(timeout));
+        jedisPoolingClientConfigurationBuilder.poolConfig(genericObjectPoolConfig);
         JedisConnectionFactory factory = new JedisConnectionFactory(redisStandaloneConfiguration,
                 jedisClientConfiguration.build());
         return factory;
@@ -140,7 +178,7 @@ public class RedisConfig {
         redisTemplate.setHashValueSerializer(new GenericJackson2JsonRedisSerializer());
         redisTemplate.setValueSerializer(fastJson2JsonRedisSerializer());
         // 开启事务
-        redisTemplate.setEnableTransactionSupport(true);
+        redisTemplate.setEnableTransactionSupport(enableTransactionSupport);
         redisTemplate.setConnectionFactory(factory);
     }
 

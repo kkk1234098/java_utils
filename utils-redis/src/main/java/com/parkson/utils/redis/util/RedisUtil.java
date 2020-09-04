@@ -97,6 +97,16 @@ public class RedisUtil {
      * @param key 键
      * @return 值
      */
+    public Object get(String key) {
+        return key == null ? null : redisTemplate.opsForValue().get(key);
+    }
+
+    /**
+     * 普通缓存获取
+     *
+     * @param key 键
+     * @return 值
+     */
     public Object get(String key, int indexdb) {
         redisTemplate.indexdb.set(indexdb);
         return key == null ? null : redisTemplate.opsForValue().get(key);

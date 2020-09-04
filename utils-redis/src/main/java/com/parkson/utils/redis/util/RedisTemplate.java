@@ -2,7 +2,6 @@ package com.parkson.utils.redis.util;
 
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.connection.jedis.JedisConnection;
-import org.springframework.data.redis.core.RedisConnectionUtils;
 import org.springframework.stereotype.Component;
 
 /**
@@ -40,7 +39,6 @@ public class RedisTemplate extends org.springframework.data.redis.core.RedisTemp
             }
         } finally {
             indexdb.remove();
-            RedisConnectionUtils.unbindConnection(this.getConnectionFactory());
         }
         return super.preProcessConnection(connection, existingConnection);
     }

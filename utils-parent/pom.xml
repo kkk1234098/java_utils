@@ -60,6 +60,7 @@
     <module>../utils-druid</module>
     <module>../utils-http</module>
     <module>../utils-redis</module>
+    <module>../utils-wechat</module>
   </modules>
 
   <dependencyManagement>
@@ -88,6 +89,12 @@
         <artifactId>fastjson</artifactId>
         <version>1.2.7</version>
       </dependency>
+      <!-- Wechat中加密 -->
+      <dependency>
+        <groupId>org.bouncycastle</groupId>
+        <artifactId>bcprov-jdk15on</artifactId>
+        <version>1.64</version>
+      </dependency>
       <!-- 其他 -->
       <dependency>
         <groupId>org.apache.commons</groupId>
@@ -103,6 +110,11 @@
       <dependency>
         <groupId>com.parkson.utils</groupId>
         <artifactId>utils-druid</artifactId>
+        <version>${utils.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.parkson.utils</groupId>
+        <artifactId>utils-http</artifactId>
         <version>${utils.version}</version>
       </dependency>
     </dependencies>

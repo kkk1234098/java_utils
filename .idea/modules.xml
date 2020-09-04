@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/utils-kafka/utils-kafka.iml" filepath="$PROJECT_DIR$/utils-kafka/utils-kafka.iml" />
       <module fileurl="file://$PROJECT_DIR$/utils-parent/utils-parent.iml" filepath="$PROJECT_DIR$/utils-parent/utils-parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/utils-redis/utils-redis.iml" filepath="$PROJECT_DIR$/utils-redis/utils-redis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/utils-wechat/utils-wechat.iml" filepath="$PROJECT_DIR$/utils-wechat/utils-wechat.iml" />
     </modules>
   </component>
 </project>

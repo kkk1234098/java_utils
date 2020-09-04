@@ -14,6 +14,7 @@
         <option value="$PROJECT_DIR$/utils-druid/pom.xml" />
         <option value="$PROJECT_DIR$/utils-parent/pom.xml" />
         <option value="$PROJECT_DIR$/utils-kafka/pom.xml" />
+        <option value="$PROJECT_DIR$/utils-wechat/pom.xml" />
       </list>
     </option>
   </component>

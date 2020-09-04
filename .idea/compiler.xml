@@ -6,11 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="utils-kafka" />
-        <module name="utils-http" />
-        <module name="utils-core" />
         <module name="utils-druid" />
         <module name="utils-redis" />
+        <module name="utils-core" />
+        <module name="utils-kafka" />
+        <module name="utils-http" />
+        <module name="utils-wechat" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -20,6 +21,7 @@
       <module name="utils-kafka" target="1.8" />
       <module name="utils-parent" target="1.8" />
       <module name="utils-redis" target="1.8" />
+      <module name="utils-wechat" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -29,6 +31,7 @@
       <module name="utils-http" options="-parameters" />
       <module name="utils-kafka" options="-parameters" />
       <module name="utils-redis" options="-parameters" />
+      <module name="utils-wechat" options="-parameters" />
     </option>
   </component>
 </project>
