@@ -1,6 +1,7 @@
 package com.parkson.utils.wechat.util;
 
 import com.alibaba.fastjson.JSONObject;
+import com.parkson.utils.wechat.entity.WechatAccessTokenResponse;
 import com.parkson.utils.wechat.entity.WechatSessionResponse;
 import com.parkson.utils.core.util.JsonUtil;
 import com.parkson.utils.http.util.HttpUtil;
@@ -25,6 +26,7 @@ public class WechatUtil {
     public static final String AES = "AES";
     public static final String AES_CBC_PADDING = "AES/CBC/PKCS7Padding";
     public static final String URL_JSCODE_SESSION = "https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=CODE&grant_type=authorization_code";
+    public static final String URL_GET_ACCESS_TOKEN = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=SECRET";
 
     /**
      * code换session
@@ -35,10 +37,10 @@ public class WechatUtil {
      * @throws Exception
      */
     public static WechatSessionResponse code2Session(String appId, String appSecret, String code) throws Exception {
-        String  requestUrl = URL_JSCODE_SESSION.replace("APPID", appId).replace("SECRET", appSecret).replace("CODE", code);
+        String requestUrl = URL_JSCODE_SESSION.replace("APPID", appId).replace("SECRET", appSecret).replace("CODE", code);
         String ret = HttpUtil.doGet(requestUrl);
         JSONObject jsonObject = JsonUtil.toJavaObject(ret, JSONObject.class);
-        WechatSessionResponse session=new WechatSessionResponse();
+        WechatSessionResponse session = new WechatSessionResponse();
         session.setSessionKey(jsonObject.getString("session_key"));
         session.setOpenId(jsonObject.getString("openid"));
         session.setErrCode(jsonObject.getInteger("errcode"));
@@ -83,5 +85,23 @@ public class WechatUtil {
             e.printStackTrace();
         }
         return null;
+    }
+
+    /**
+     * 获取app的AccessToken
+     * @param appId
+     * @param appSecret
+     * @return
+     */
+    public static WechatAccessTokenResponse getAccessToken(String appId, String appSecret) throws Exception {
+        String requestUrl = URL_GET_ACCESS_TOKEN.replace("APPID", appId).replace("SECRET", appSecret);
+        String ret = HttpUtil.doGet(requestUrl);
+        JSONObject jsonObject = JsonUtil.toJavaObject(ret, JSONObject.class);
+        WechatAccessTokenResponse response = new WechatAccessTokenResponse();
+        response.setAccessToken(jsonObject.getString("access_token"));
+        response.setExpiresIn(jsonObject.getInteger("expires_in"));
+        response.setErrCode(jsonObject.getInteger("errcode"));
+        response.setErrMsg(jsonObject.getString("errmsg"));
+        return response;
     }
 }
