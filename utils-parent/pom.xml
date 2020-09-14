@@ -60,6 +60,7 @@
     <module>../utils-druid</module>
     <module>../utils-http</module>
     <module>../utils-redis</module>
+    <module>../utils-kafka</module>
     <module>../utils-wechat</module>
   </modules>
 

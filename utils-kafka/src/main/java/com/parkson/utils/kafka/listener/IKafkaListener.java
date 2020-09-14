@@ -1,4 +1,4 @@
-package com.parkson.utils.kafka.util.service;
+package com.parkson.utils.kafka.listener;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -11,7 +11,7 @@ import org.springframework.kafka.annotation.KafkaListener;
  * @Version 1.0
  */
 
-public interface KafkaListenerService {
+public interface IKafkaListener {
     @KafkaListener(topics = "#{kafkaTopicName}", groupId = "#{topicGroupId}")
     public void processMessage(ConsumerRecord<Integer, String> record);
 }
