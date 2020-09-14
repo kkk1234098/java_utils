@@ -1,7 +1,7 @@
-package com.parkson.utils.kafka.util.annotation;
+package com.parkson.utils.kafka.annotation;
 
 
-import com.parkson.utils.kafka.util.config.KafkaTopicConfiguration;
+import com.parkson.utils.kafka.config.KafkaTopicConfiguration;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;

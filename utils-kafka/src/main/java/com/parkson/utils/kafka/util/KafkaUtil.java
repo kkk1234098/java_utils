@@ -1,4 +1,4 @@
-package com.parkson.utils.kafka.util.utils;
+package com.parkson.utils.kafka.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

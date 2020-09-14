@@ -1,6 +1,6 @@
-package com.parkson.utils.kafka.util.config;
+package com.parkson.utils.kafka.config;
 
-import com.parkson.utils.kafka.util.utils.KafkaUtil;
+import com.parkson.utils.kafka.util.KafkaUtil;
 import lombok.Data;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
