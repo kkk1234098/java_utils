@@ -72,11 +72,8 @@ public class KafkaTopicConfiguration implements Serializable {
 
     private String groupId;
     private String[] topicName;
-
-
-
+    
 //    private final KafkaTopicProperties properties;
-//
 //
 //    public KafkaTopicConfiguration(@Qualifier("kafkaTopicProperties") KafkaTopicProperties properties) {
 //        this.properties = properties;
