@@ -105,12 +105,12 @@ public class KafkaTopicConfiguration implements Serializable {
 
     @Bean
     public ConsumerFactory<Integer, String> consumerFactory() {
+        log.info("初始化kafka消费者");
         return new DefaultKafkaConsumerFactory<>(consumerConfigs());
     }
 
     @Bean
     public Map<String, Object> consumerConfigs() {
-        log.info("初始化kafka消费者");
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, this.bootstrapServers);
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, this.consumerKeyDeserializer);
@@ -125,7 +125,6 @@ public class KafkaTopicConfiguration implements Serializable {
 
     @Bean
     public Map<String, Object> producerConfigs() {
-        log.info("初始化kafka提供者");
         Map<String, Object> props = new HashMap<>();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, this.bootstrapServers);
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, this.producerKeySerializer);
@@ -139,11 +138,12 @@ public class KafkaTopicConfiguration implements Serializable {
 
     @Bean
     public KafkaTemplate<String, String> kafkaTemplate() {
-        log.info("初始化kafka");
+        log.info("初始化kafkaTemplate");
         return new KafkaTemplate<String, String>(producerFactory());
     }
     @Bean
     public ProducerFactory<String, String> producerFactory() {
+        log.info("初始化kafka提供者");
         return new DefaultKafkaProducerFactory<>(producerConfigs());
     }
 
