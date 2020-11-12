@@ -7,7 +7,7 @@ package com.parkson.utils.wechat.entity;
  * @Date 2020/9/3 3:36 下午
  * @Version 1.0
  */
-public class WechatSessionResponse {
+public class WechatSessionResponse extends WechatBaseResponse {
 
     private  String accessToken;
 
@@ -17,13 +17,11 @@ public class WechatSessionResponse {
 
     private String openId;
 
+    private String unionId;
+
     private String scope;
 
     private String sessionKey;
-
-    private Integer errCode;
-
-    private String errMsg;
 
     public String getAccessToken() {
         return accessToken;
@@ -57,6 +55,14 @@ public class WechatSessionResponse {
         this.openId = openId;
     }
 
+    public String getUnionId() {
+        return unionId;
+    }
+
+    public void setUnionId(String unionId) {
+        this.unionId = unionId;
+    }
+
     public String getScope() {
         return scope;
     }
@@ -71,21 +77,5 @@ public class WechatSessionResponse {
 
     public void setSessionKey(String sessionKey) {
         this.sessionKey = sessionKey;
-    }
-
-    public Integer getErrCode() {
-        return errCode;
-    }
-
-    public void setErrCode(Integer errCode) {
-        this.errCode = errCode;
-    }
-
-    public String getErrMsg() {
-        return errMsg;
-    }
-
-    public void setErrMsg(String errMsg) {
-        this.errMsg = errMsg;
     }
 }

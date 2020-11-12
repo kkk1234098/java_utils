@@ -426,6 +426,24 @@ public class RedisUtil {
             return 0;
         }
     }
+
+    /**
+     * 比较key和otherKey的差集
+     *
+     * @param key
+     * @param otherKey
+     * @return
+     */
+    public Set<Object> setDiff(String key, String otherKey) {
+        try {
+            return redisTemplate.opsForSet().difference(key, otherKey);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
     //===============================list=================================
 
     /**

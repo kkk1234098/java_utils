@@ -62,6 +62,7 @@
     <module>../utils-redis</module>
     <module>../utils-kafka</module>
     <module>../utils-wechat</module>
+    <module>../utils-cron-task</module>
   </modules>
 
   <dependencyManagement>
@@ -116,6 +117,11 @@
       <dependency>
         <groupId>com.parkson.utils</groupId>
         <artifactId>utils-http</artifactId>
+        <version>${utils.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.parkson.utils</groupId>
+        <artifactId>utils-kafka</artifactId>
         <version>${utils.version}</version>
       </dependency>
     </dependencies>

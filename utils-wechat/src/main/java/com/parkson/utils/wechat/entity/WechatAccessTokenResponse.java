@@ -7,15 +7,11 @@ package com.parkson.utils.wechat.entity;
  * @Date 2020/9/8 10:21 上午
  * @Version 1.0
  */
-public class WechatAccessTokenResponse {
+public class WechatAccessTokenResponse extends WechatBaseResponse {
 
     private  String accessToken;
 
     private int expiresIn;
-
-    private Integer errCode;
-
-    private String errMsg;
 
     public String getAccessToken() {
         return accessToken;
@@ -31,21 +27,5 @@ public class WechatAccessTokenResponse {
 
     public void setExpiresIn(int expiresIn) {
         this.expiresIn = expiresIn;
-    }
-
-    public Integer getErrCode() {
-        return errCode;
-    }
-
-    public void setErrCode(Integer errCode) {
-        this.errCode = errCode;
-    }
-
-    public String getErrMsg() {
-        return errMsg;
-    }
-
-    public void setErrMsg(String errMsg) {
-        this.errMsg = errMsg;
     }
 }
